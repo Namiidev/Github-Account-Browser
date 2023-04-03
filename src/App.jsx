@@ -2,6 +2,8 @@ import { Container } from "@mui/material";
 import Searcher from "./components/Searcher";
 import { useEffect, useState } from "react";
 import gettingUsers from "./services/users";
+import Card from "./components/Card";
+import "./App.css"
 
 function App() {
   const [inputUser, setInputUser] = useState("octocat");
@@ -33,10 +35,10 @@ function App() {
     <Container
       sx={{
         background: "whitesmoke",
-        width: "80vw",
-        height: "500px",
+        width: "92vw",
+        height: "600px",
         borderRadius: "16px",
-        marginTop: "40px",
+        marginTop: "13rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -47,6 +49,7 @@ function App() {
         inputUser={inputUser}
         userState={userState}
       ></Searcher>
+      <Card userState={userState} ></Card>
     </Container>
   );
 }

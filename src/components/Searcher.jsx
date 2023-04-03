@@ -21,6 +21,7 @@ function Searcher({ setInputUser }) {
       sx={{
         direction: "row",
         marginTop: "30px",
+        marginBottom: "2.2rem",
         width: "80%",
       }}
     >

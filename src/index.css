@@ -1,6 +1,16 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    font-size: 62.5%;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+ 
+}
+
+body {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(51, 9, 121, 1) 57%,
+      rgba(51, 9, 121, 1) 100%
+    );
 }
