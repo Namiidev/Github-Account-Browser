@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Container } from "@mui/material";
+import Searcher from "./components/Searcher";
+import { useEffect, useState } from "react";
+import gettingUsers from "./services/users";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [inputUser, setInputUser] = useState("octocat");
+  const [userState, setUserState] = useState(inputUser);
+  const [notfound, setNotFound] = useState(false)
+  async function gettingUser(user) { 
+    const userResponse = await gettingUsers(user);
+    if (userState === 'octocat') {
+      localStorage.setItem('octocat', userResponse)
+      
+    }
 
+    if (userResponse.message === "Not Found") {
+      const { octocat } = localStorage;
+      setInputUser(octocat);
+      setNotFound(true);
+    } else {
+      setUserState(userResponse)
+    }
+    console.log(userResponse)
+  }
+
+  useEffect(() => {
+    gettingUser(inputUser);
+  }, [inputUser]);
+
+  console.log(inputUser);
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Container
+      sx={{
+        background: "whitesmoke",
+        width: "80vw",
+        height: "500px",
+        borderRadius: "16px",
+        marginTop: "40px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Searcher
+        setInputUser={setInputUser}
+        inputUser={inputUser}
+        userState={userState}
+      ></Searcher>
+    </Container>
+  );
 }
 
-export default App
+export default App;
