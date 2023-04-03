@@ -8,4 +8,7 @@ project still on beta phase, i'm planning to add some other cool features as wel
 
 LIVE DEMO: https://github-account-browser.web.app
 
-deployed using Firebase 
+# Made with Vite.js (React.js) and the Github API with simple JavaScript and deployed using Firebase 
+
+
+
